@@ -91,8 +91,8 @@ export const approveRegistrationRequest = async (req, res) => {
 
     // Get the request
     const requestResult = await client.query(
-      'SELECT * FROM user_requests WHERE id = $1 AND status = $\'pending\'',
-      [requestId]
+      'SELECT * FROM user_requests WHERE id = $1 AND status = $2',
+      [requestId,'pending']
     );
 
     if (requestResult.rows.length === 0) {
