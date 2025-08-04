@@ -1,13 +1,23 @@
 {
-  "name": "server",
+  "name": "lims-server",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Laboratory Information Management System Backend",
+  "main": "server.js",
+  "type": "module",
   "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "init-db": "node db/init.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "lims",
+    "laboratory",
+    "inventory",
+    "express",
+    "postgresql"
+  ],
+  "author": "Your Name",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^3.0.2",
@@ -16,6 +26,9 @@
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "node-cron": "^4.2.1",
-    "pg": "^8.16.3"
+    "nodemon": "^3.1.10",
+    "pg": "^8.16.3",
+    "qrcode": "^1.5.4",
+    "uuid": "^11.1.0"
   }
 }
