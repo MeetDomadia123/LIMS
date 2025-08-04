@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { mockAuth } from './utils/mockAuth';
+import { apiAuth } from './services/apiAuth';
 import Toast from './components/Toast';
 import Navbar from './components/Navbar';
 import PrivateRoute from './routes/PrivateRoute';
@@ -8,15 +8,16 @@ import PrivateRoute from './routes/PrivateRoute';
 // Pages
 import Login from './pages/Login';
 import Signup from './pages/Signup';
-import AdminDashboard from './pages/dashboards/AdminDashboard';
+import AdminDashboard from './pages/AdminDashboard'; // Updated path
 import LabDashboard from './pages/dashboards/LabDashboard';
 import ResearchDashboard from './pages/dashboards/ResearchDashboard';
 import EngineerDashboard from './pages/dashboards/EngineerDashboard';
 import Inventory from './pages/Inventory';
 import QRScanTransaction from './pages/QRScanTransaction';
+import UserApprovals from './components/UserApprovals';
 
 function App() {
-  const user = mockAuth.getCurrentUser();
+  const user = apiAuth.getCurrentUser();
 
   return (
     <Router>
@@ -40,6 +41,14 @@ function App() {
             element={
               <PrivateRoute allowedRoles={['admin']}>
                 <AdminDashboard />
+              </PrivateRoute>
+            } 
+          />
+          <Route 
+            path="/admin/user-approvals" 
+            element={
+              <PrivateRoute allowedRoles={['admin']}>
+                <UserApprovals />
               </PrivateRoute>
             } 
           />
