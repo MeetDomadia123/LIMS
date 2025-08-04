@@ -549,3 +549,35 @@ export const getSimpleMetrics = async (req, res) => {
     ]);
   }
 };
+
+// Replace the getComprehensiveMetrics function with this simpler version
+
+export const getComprehensiveMetrics = async (req, res) => {
+  try {
+    // Simple queries that definitely work
+    const totalComponents = await pool.query('SELECT COUNT(*) as count FROM components');
+    const lowStock = await pool.query('SELECT COUNT(*) as count FROM components WHERE quantity <= critical_threshold');
+    
+    // Basic response structure
+    const data = {
+      timestamp: new Date().toISOString(),
+      summary: {
+        total_components: parseInt(totalComponents.rows[0].count) || 0,
+        low_stock_count: parseInt(lowStock.rows[0].count) || 0,
+        transactions_24h: 0 // Static for now
+      },
+      status: 'success'
+    };
+
+    console.log('Comprehensive metrics data:', data); // Debug log
+    res.json(data);
+
+  } catch (error) {
+    console.error('Comprehensive metrics error:', error);
+    res.status(500).json({ 
+      error: 'Failed to fetch comprehensive metrics',
+      details: error.message 
+    });
+  }
+};
+

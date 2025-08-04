@@ -9,7 +9,8 @@ import {
   getJsonApiData,
   getTestMetrics,
   getPrometheusMetrics,
-  getSimpleMetrics
+  getSimpleMetrics,
+  getComprehensiveMetrics  // Add this
 } from '../controllers/metricsController.js';
 import { verifyToken } from '../middleware/authMiddleware.js';
 
@@ -42,5 +43,8 @@ router.get('/simple', getSimpleMetrics);
 router.get('/grafana', grafanaHealth);
 router.post('/grafana/search', grafanaSearch);
 router.post('/grafana/query', grafanaQuery);
+
+// Add this route
+router.get('/comprehensive', getComprehensiveMetrics);
 
 export default router;
