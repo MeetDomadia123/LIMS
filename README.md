@@ -88,6 +88,73 @@ A full-stack digital solution built with modern technologies and enhanced by aut
 - **Frontend Developer**: UI, QR integration, React structure
 
 ---
+---
+# 🔮 Future Implementation
+
+The current version of LIMS provides a solid MVP foundation. Here’s how the platform can be scaled and enhanced in future iterations:
+
+---
+
+## 📦 1. Automatic Reordering via Supplier APIs
+- Integrate with external supplier APIs (e.g., Digi-Key, Mouser)
+- Trigger reordering when `quantity < critical_threshold`
+- Enable tracking of order status and expected delivery
+
+---
+
+## 📲 2. Progressive Web App (PWA) Mode
+- Make the frontend PWA-compatible for mobile usability
+- Allow lab technicians to scan QR codes using smartphones
+- Enable offline access to component logs and sync when online
+
+---
+
+## 📊 3. ML-Based Stock Forecasting
+- Analyze historical transaction logs to predict demand
+- Forecast usage per semester or academic cycle
+- Suggest restocking plans in advance
+
+---
+
+## 🧾 4. PDF Reports and Barcode Printing
+- Export monthly usage and stock reports as downloadable PDFs
+- Automatically generate and print barcode labels for bins
+
+---
+
+## 🔗 5. Project-Based Component Tracking
+- Assign transactions to projects or student teams
+- Enable component accountability and reporting
+- View component usage by project for analysis or billing
+
+---
+
+## 🔐 6. Role-Based Dashboard Views
+- Customize views based on roles:
+  - Admin: Full access
+  - Lab Assistant: Issue and return rights only
+  - Student: View-only or chatbot queries
+
+---
+
+## 🔔 7. Real-Time Notification System
+- Use WebSockets or FCM to push alerts
+- Notify about:
+  - Low stock levels
+  - Inactivity of components (not used for months)
+  - New transactions
+
+---
+
+## ☁️ 8. Cloud-Hosted Multi-Lab System
+- Support for multiple departments/labs
+- Lab-level data isolation
+- Admin panel for super-admins to manage all labs
+
+---
+
+These future enhancements will help LIMS grow into a truly intelligent and autonomous inventory ecosystem.
+---
 
 ## 📬 Contact
 Created by passionate engineers at DJSCE, submitted for **A-1 Launchpad 2025**. 
