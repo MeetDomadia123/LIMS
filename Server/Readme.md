@@ -1,104 +1,58 @@
-⚙️ Backend Technology Stack
+### ✅ `README.md` for Backend
 
-🧩 Runtime & Framework
+```md
+# 🔙 LIMS Backend (Node.js + PostgreSQL)
 
-Node.js ^18.x – JavaScript runtime environment
+This is the backend server for the LIMS application.
 
-Express.js ^4.x – Minimal and flexible web application framework
+## 📦 Tech Stack
+- Node.js (ESM mode)
+- Express.js
+- PostgreSQL
+- JSON Web Token (JWT)
+- Bcrypt.js for password hashing
+- dotenv
 
-🗄️ Database & ORM
-PostgreSQL ^14.x – Advanced open-source relational database
+## 📁 Folder Structure
+```
+server/
+├── controllers/         # Auth, Component logic
+├── routes/              # Auth, Protected, Component, Transaction APIs
+├── middleware/          # JWT middleware
+├── db/                  # PostgreSQL pool setup
+├── .env
+└── server.js
+```
 
-node-postgres (pg) ^8.x – PostgreSQL client for Node.js
+## 🔧 Setup Instructions
+```bash
+cd server
+npm install
+node server.js
+```
 
-SQL – Structured Query Language for database operations
+## 🗃️ Database Tables
+- `users`
+- `components`
+- `transactions`
 
-🔐 Authentication & Security
-JSON Web Tokens (JWT) ^9.x – Token-based authentication
+> SQL setup files are inside `server/db/schema.sql` (or paste here manually if not modularized).
 
-bcryptjs ^2.x – Password hashing
+## 🔐 Auth
+- `/api/auth/login` — Get JWT token
+- Use `Authorization: Bearer <token>` for all protected routes
 
-CORS ^2.x – Cross-Origin Resource Sharing middleware
+## 🔁 Component APIs
+- `POST /api/components`
+- `GET /api/components`
+- `PUT /api/components/:id`
+- `GET /api/components/:id/history`
 
-Helmet.js (recommended) – Security best practices middleware
+## 🔄 Transaction API
+- `POST /api/transactions`
 
-⚙️ Environment & Configuration
-dotenv ^16.x – Load environment variables
-
-Environment Variables – Secure config management
-
-🧱 Middleware & Utilities
-Express Middleware – Authentication, validation, error handling
-
-Body Parser – JSON/form parsing (built-in since Express 4.16+)
-
-Cookie Parser (optional) – Cookie parsing middleware
-
-🗃️ Database Technologies
-📌 Primary Database
-PostgreSQL ^14.x – Main relational database system
-
-SQL / PL/pgSQL – For data manipulation and advanced queries
-
-💡 Database Features Used
-ACID Transactions – Safe and reliable operations
-
-Foreign Key Constraints – Enforce referential integrity
-
-Check Constraints – Validation at DB level
-
-Indexes – Query performance improvements
-
-UUID/Serial Primary Keys – Unique identifiers
-
-🛠️ Database Tools
-psql – PostgreSQL CLI
-
-pgAdmin (optional) – GUI for database management
-
-Migration Scripts – Schema versioning and updates
-
-🔧 Development & Build Tools
-📦 Package Management
-npm ^8.x – Package manager
-
-package.json – Dependency & script management
-
-🌱 Version Control
-Git – Source code management
-
-GitHub – Remote repository hosting
-
-✅ Code Quality
-ESLint – JavaScript linting
-
-Prettier (recommended) – Code formatting
-
-EditorConfig (recommended) – Code style consistency
-
-🧑‍💻 Development Environment
-Visual Studio Code (recommended) – Code editor
-
-Chrome DevTools – Debugging tools
-
-Postman / Insomnia (recommended) – API testing
-
-🚀 Deployment & Infrastructure
-🔧 Server Technologies
-Node.js Runtime – Server-side execution
-
-PM2 (recommended) – Process manager for Node.js
-
-Nginx (recommended) – Reverse proxy & static file server
-
-🗃️ Database Hosting
-PostgreSQL Server – Remote DB hosting
-
-Connection Pooling – Efficient DB connections
-
-🌍 Environment Management
-Production Environment Variables – Secure config
-
-SSL/TLS Certificates – HTTPS setup
-
-Environment-specific Configurations – Per-stage settings
+## 📊 Dashboard Support (for Grafana)
+Just connect PostgreSQL as a data source and use custom SQL panels. Alert rules can be built on:
+- Low stock: `quantity < critical_threshold`
+- Stale stock: `last_moved < NOW() - interval '60 days'`
+```
